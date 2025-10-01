@@ -49,18 +49,18 @@ pio.renderers.default="browser"
 # 1. Bring in Data
 
 # Load S&P Data
-esg = pd.read_csv("./Data/s&p_data/sp500_esg_data.csv")
-sp500_companies = pd.read_csv("./Data/s&p_data/sp500_price_data.csv")
-sp500 = pd.read_csv("./Data/s&p_data/sp500_index.csv")
+esg = pd.read_csv("./data/s&p_data/sp500_esg_data.csv")
+sp500_companies = pd.read_csv("./data/s&p_data/sp500_price_data.csv")
+sp500 = pd.read_csv("./data/s&p_data/sp500_index.csv")
 
 # Load Mag Seven Data
-aapl = pd.read_csv('./Data/mag_seven_data/AAPL1424.csv')
-amzn = pd.read_csv('./Data/mag_seven_data/AMZN1424.csv')
-googl = pd.read_csv('./Data/mag_seven_data/GOOGL1424.csv')
-meta = pd.read_csv('./Data/mag_seven_data/META1424.csv')
-msft = pd.read_csv('./Data/mag_seven_data/MSFT1424.csv')
-nvda = pd.read_csv('./Data/mag_seven_data/NVDA1424.csv')
-tsla = pd.read_csv('./Data/mag_seven_data/TSLA1424.csv')
+aapl = pd.read_csv('./data/mag_seven_data/AAPL1424.csv')
+amzn = pd.read_csv('./data/mag_seven_data/AMZN1424.csv')
+googl = pd.read_csv('./data/mag_seven_data/GOOGL1424.csv')
+meta = pd.read_csv('./data/mag_seven_data/META1424.csv')
+msft = pd.read_csv('./data/mag_seven_data/MSFT1424.csv')
+nvda = pd.read_csv('./data/mag_seven_data/NVDA1424.csv')
+tsla = pd.read_csv('./data/mag_seven_data/TSLA1424.csv')
 
 # Add symbol column to Mag Seven Data
 aapl["Symbol"] = "AAPL"
