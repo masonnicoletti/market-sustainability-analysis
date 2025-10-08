@@ -221,7 +221,7 @@ plt.xlabel("Volume (log)")
 plt.close()
 
 
-sns.boxplot(esg_filtered[esg_filtered['Symbol'] == 'Other'], x='totalEsg', hue='Symbol', color='green')
+sns.boxplot(esg_filtered[esg_filtered['Symbol'] == 'Other'], x='totalEsg', hue='Symbol')
 plt.title("ESG Scores Across S&P 500")
 plt.xlabel("ESG Score")
 #plt.show()
