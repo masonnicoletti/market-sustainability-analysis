@@ -112,7 +112,9 @@ plt.figure(figsize=(8,5))
 sns.kdeplot(esg, x='totalEsg', hue='GICS Sector', fill=True, alpha=0.03)
 plt.title("ESG Scores Across Industries")
 plt.xlabel("ESG Score")
-plt.show()
+plt.savefig("./plots/esg_density_plot.png")
+#plt.show()
+plt.close()
 
 
 # 3D Scatterplot of 3 ESG Factors
@@ -120,6 +122,7 @@ fig_3D = px.scatter_3d(esg, x="environmentScore", y='socialScore', z='governance
                         color='GICS Sector', hover_data=['Symbol'], title="The Three Components of ESG across the S&P 500", 
                         labels={"environmentScore": "Environment", 'socialScore': "Social", 'governanceScore': "Governance"})
 fig_3D.update_traces(marker=dict(line=dict(width=2, color='White')))
+fig_3D.write_html("./html/interactive_3d_esg.html")
 fig_3D.show()
 
 
@@ -137,7 +140,9 @@ plt.ylabel("ESG Score")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.legend(labels=["Environmental", "Social", "Governance"])
-plt.show()
+plt.savefig("./plots/mag7_esg_bar.png")
+#plt.show()
+plt.close()
 
 
 # Time Series of S&P Data
@@ -148,6 +153,7 @@ fig.update_layout(xaxis_showgrid=True, yaxis_showgrid=False, plot_bgcolor='white
                   xaxis=dict(gridcolor='lightgrey'), yaxis=dict(gridcolor='lightgrey'),
                   title_font=dict(color='black', size=30, family="Retina"))
 fig.add_shape(type='rect', xref='paper', yref='paper', x0=0, y0=0, x1=1, y1=1, line=dict(color='black', width=1))
+fig.write_html("./html/s&p_timeseries.html")
 fig.show()
 
 
@@ -167,7 +173,9 @@ plt.xlabel("Country (GDP)")
 plt.ylabel("Value (Trillions)")
 plt.legend(title="Value in Trillions of Dollars")
 plt.xticks(rotation=30)
-plt.show()
+plt.savefig("./plots/economy_bar.png")
+#plt.show()
+plt.close()
 
 
 # Time Series of Mag 7 Performance
@@ -179,14 +187,14 @@ fig2.update_layout(xaxis_showgrid=True, yaxis_showgrid=False, plot_bgcolor='whit
                   xaxis=dict(gridcolor='lightgrey'), yaxis=dict(gridcolor='lightgrey'),
                   title_font=dict(color='black', size=24))
 fig2.add_shape(type='rect', xref='paper', yref='paper', x0=0, y0=0, x1=1, y1=1, line=dict(color='black', width=1))
+fig2.write_html("./html/mag7_timeseries.html")
 fig2.show()
 
 
 
 
-'''
 
-Extra Plots
+## Extra Plots
 
 # Swarm Plot of Mag Seven compared to other Stocks
 sns.swarmplot(data=esg_filtered[esg_filtered['Symbol'] == 'Other'], x='totalEsg', hue='Symbol', dodge=True, color='0.5', zorder=1)
@@ -194,20 +202,29 @@ for stock in mag7_list:
     stock_data = esg_filtered[esg_filtered['Symbol'] == stock]
     plt.scatter(stock_data['totalEsg'], [0] * len(stock_data), label=stock, s=300, zorder=2)
 plt.legend(bbox_to_anchor = (1, 1))
-plt.show()
+#plt.show()
+#plt.savefig("./plots/esg_comparison_swarm.png")
+plt.close()
 
 # KDE Plots of Mag Seven and Volume
 sns.kdeplot(mag7, x="Volume", hue="Symbol", fill=True, alpha=0.3)
 plt.xlim(0, 0.5E9)
-plt.show()
+#plt.show()
+plt.close()
 
 # KDE Plot of Mag Seven and Volume (log)
 sns.kdeplot(mag7, x="Volume", hue="Symbol", fill=True, alpha=0.3)
 plt.xscale("log")
 plt.xlabel("Volume (log)")
-plt.show()
+#plt.show()
+#plt.savefig("./plots/mag7_density_log.png")
+plt.close()
 
 
-sns.boxplot(esg_filtered[esg_filtered['Symbol'] == 'Other'], x='totalEsg', hue='Symbol')
+sns.boxplot(esg_filtered[esg_filtered['Symbol'] == 'Other'], x='totalEsg', hue='Symbol', color='green')
+plt.title("ESG Scores Across S&P 500")
+plt.xlabel("ESG Score")
+#plt.show()
+#plt.savefig("./plots/esg_box.png")
+plt.close()
 
-'''
